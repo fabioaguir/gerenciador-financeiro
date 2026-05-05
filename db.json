@@ -3,25 +3,25 @@
         {
             "id": 1,
             "value": 100,
-            "type": "INCOME",
+            "type": "income",
             "title": "Salário"
         },
         {
             "id": 2,
             "value": 50,
-            "type": "OUTCOME",
+            "type": "outcome",
             "title": "Aluguel"
         },
         {
             "id": 3,
             "value": 50,
-            "type": "INCOME",
+            "type": "income",
             "title": "Freelance"
         },
         {
             "id": 4,
             "value": 100,
-            "type": "OUTCOME",
+            "type": "outcome",
             "title": "Compras"
         }
     ]

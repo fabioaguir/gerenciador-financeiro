@@ -1,9 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject, OnInit } from '@angular/core';
 import { Balance } from "./components/balance/balance";
 import { TransactionItem } from "./components/transaction-item/transaction-item";
 import { Transaction } from '../../shared/transaction/intafaces/transaction';
-import { TransactionType } from '../../shared/transaction/enuns/transaction-type';
 import { NoTransaction } from "./components/no-transaction/no-transaction";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -11,24 +11,17 @@ import { NoTransaction } from "./components/no-transaction/no-transaction";
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
+export class Home implements OnInit {
+  
+  private httpClient = inject(HttpClient)
+  
+  transactions = signal<Transaction[]>([])
+  
+  ngOnInit(): void {
+    this.getTransactions()
+  }
 
-  transactions = signal<Transaction[]>([
-    {
-      value: 100, type: TransactionType.INCOME,
-      title: 'Salário'
-    },
-    {
-      value: 50, type: TransactionType.OUTCOME,
-      title: 'Aluguel'
-    },
-    {
-      value: 50, type: TransactionType.INCOME,
-      title: 'Freelance'
-    },
-    {
-      value: 100, type: TransactionType.OUTCOME,
-      title: 'Compras'
-    },
-  ])
+  private getTransactions() {
+    this.httpClient.get<Transaction[]>('http://localhost:3000/transactions')
+      .subscribe(transactions => this.transactions.set(transactions))}
 }
