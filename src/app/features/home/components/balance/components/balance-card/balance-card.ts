@@ -25,8 +25,14 @@ export class BalanceCard {
         return ValueCssClass.income;
       case 'outcome':
         return ValueCssClass.outcome;
-      case 'balance':
-        return this.value() > 0 ? ValueCssClass.income : ValueCssClass.outcome;
+        case 'balance':
+          if (this.value() > 0) {
+            return ValueCssClass.income;
+          } else if (this.value() < 0) {
+            return ValueCssClass.outcome;
+          } else {
+            return 'zero' as ValueCssClass; // Assuming you have a CSS class for zero balance
+          }
     }
   })
 }

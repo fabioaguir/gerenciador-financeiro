@@ -1,11 +1,5 @@
 <app-balance-card
     class="card"
-    type="income"
-    label="Ganhos"
-    [value]="totalIncome()"
-></app-balance-card>
-<app-balance-card
-    class="card"
     type="outcome"
     label="Gastos"
     [value]="totalOutcome()"
@@ -15,4 +9,10 @@
     type="balance"
     label="Saldo"
     [value]="totalBalance()"
+></app-balance-card>
+<app-balance-card
+    class="card"
+    type="income"
+    label="Ganhos"
+    [value]="totalIncome()"
 ></app-balance-card>
