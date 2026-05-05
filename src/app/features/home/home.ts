@@ -14,21 +14,21 @@ import { NoTransaction } from "./components/no-transaction/no-transaction";
 export class Home {
 
   transactions = signal<Transaction[]>([
-    // {
-    //   value: 100, type: TransactionType.INCOME,
-    //   title: 'Salário'
-    // },
-    // {
-    //   value: 50, type: TransactionType.OUTCOME,
-    //   title: 'Aluguel'
-    // },
-    // {
-    //   value: 50, type: TransactionType.INCOME,
-    //   title: 'Freelance'
-    // },
-    // {
-    //   value: 100, type: TransactionType.OUTCOME,
-    //   title: 'Compras'
-    // },
+    {
+      value: 100, type: TransactionType.INCOME,
+      title: 'Salário'
+    },
+    {
+      value: 50, type: TransactionType.OUTCOME,
+      title: 'Aluguel'
+    },
+    {
+      value: 50, type: TransactionType.INCOME,
+      title: 'Freelance'
+    },
+    {
+      value: 100, type: TransactionType.OUTCOME,
+      title: 'Compras'
+    },
   ])
 }

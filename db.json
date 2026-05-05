@@ -1,0 +1,28 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "value": 100,
+            "type": "INCOME",
+            "title": "Salário"
+        },
+        {
+            "id": 2,
+            "value": 50,
+            "type": "OUTCOME",
+            "title": "Aluguel"
+        },
+        {
+            "id": 3,
+            "value": 50,
+            "type": "INCOME",
+            "title": "Freelance"
+        },
+        {
+            "id": 4,
+            "value": 100,
+            "type": "OUTCOME",
+            "title": "Compras"
+        }
+    ]
+}
