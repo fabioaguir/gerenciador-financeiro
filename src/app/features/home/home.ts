@@ -5,10 +5,12 @@ import { Transaction } from '../../shared/transaction/intafaces/transaction';
 import { NoTransaction } from "./components/no-transaction/no-transaction";
 import { HttpClient } from '@angular/common/http';
 import { TransactionService } from '../../shared/transaction/service/transaction-service';
+import { MatAnchor, MatButtonModule } from "@angular/material/button";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [Balance, TransactionItem, NoTransaction],
+  imports: [Balance, TransactionItem, NoTransaction, MatAnchor, MatButtonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

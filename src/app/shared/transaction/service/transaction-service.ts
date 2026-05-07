@@ -13,5 +13,8 @@ export class TransactionService {
         return this.httpClient.get<Transaction[]>('http://localhost:3000/transactions')
     }
 
-
+    create(transaction: Omit<Transaction, 'id'>) {
+        return this.httpClient.post<Transaction>('http://localhost:3000/transactions', transaction)
+    }
+    
 }
