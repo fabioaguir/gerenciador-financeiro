@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
-import { Transaction } from '../../../../../../shared/transaction/intafaces/transaction';
-import { TransactionType } from '../../../../../../shared/transaction/enuns/transaction-type';
+import { TransactionType } from '../../../../../../../../shared/transaction/enuns/transaction-type';
+import { Transaction } from '../../../../../../../../shared/transaction/intafaces/transaction';
 
 
 const CssClass = {
@@ -23,5 +23,5 @@ export class TransactionValue {
 
   cssClass = computed(() => {
     return CssClass[this.transaction().type]
-  }) 
+  })
 }

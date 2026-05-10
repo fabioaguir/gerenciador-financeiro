@@ -1,23 +1,24 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { MatAnchor, MatButtonModule } from "@angular/material/button";
+import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { ConfirmationDialogService } from '../../shared/dialog-confirmation/service/confirmation-dialog.service';
-import { FeedBackService } from '../../shared/service/feedback/feedback.service';
-import { Transaction } from '../../shared/transaction/intafaces/transaction';
-import { TransactionService } from '../../shared/transaction/service/transaction-service';
-import { Balance } from "./components/balance/balance";
-import { NoTransaction } from "./components/no-transaction/no-transaction";
-import { TransactionItem } from "./components/transaction-item/transaction-item";
-
+import { ConfirmationDialogService } from '../../../../shared/dialog-confirmation/service/confirmation-dialog.service';
+import { FeedBackService } from '../../../../shared/service/feedback/feedback.service';
+import { Transaction } from '../../../../shared/transaction/intafaces/transaction';
+import { TransactionService } from '../../../../shared/transaction/service/transaction-service';
+import { MatAnchor, MatButtonModule } from '@angular/material/button';
+import { NoTransaction } from './components/no-transaction/no-transaction';
+import { Balance } from './components/balance/balance';
+import { TransactionContainerComponent } from './components/transaction-container/transaction-container.component';
+import { TransactionItem } from './components/transaction-item/transaction-item';
 
 @Component({
-  selector: 'app-home',
-  imports: [Balance, TransactionItem, NoTransaction, MatAnchor, MatButtonModule, RouterLink],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  selector: 'app-list',
+  imports: [Balance, TransactionItem,
+    NoTransaction, MatAnchor, MatButtonModule,
+    RouterLink, TransactionContainerComponent],
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss',
 })
-export class Home implements OnInit {
-
+export class ListComponent {
   private transactionService = inject(TransactionService)
   private router = inject(Router)
   private feedbackService = inject(FeedBackService)

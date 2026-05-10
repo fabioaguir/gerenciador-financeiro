@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { BalanceCard } from "./components/balance-card/balance-card";
-import { Transaction } from '../../../../shared/transaction/intafaces/transaction';
+import { Transaction } from '../../../../../../shared/transaction/intafaces/transaction';
 
 @Component({
   selector: 'app-balance',
@@ -10,7 +10,7 @@ import { Transaction } from '../../../../shared/transaction/intafaces/transactio
 })
 export class Balance {
 
-  transactions =  input.required<Transaction[]>()
+  transactions = input.required<Transaction[]>()
 
   totalIncome = computed(() => {
     return this.transactions().reduce((acc, transaction) => {
@@ -27,7 +27,7 @@ export class Balance {
         return acc + transaction.value;
       }
       return acc;
-    }, 0);      
+    }, 0);
   });
 
   totalBalance = computed(() => {
