@@ -1,22 +1,10 @@
 {
   "transactions": [
     {
-      "title": "fff",
-      "value": 0.22,
-      "type": "outcome",
-      "id": 7
-    },
-    {
       "title": "gfg",
       "value": 0.12,
       "type": "income",
       "id": 12
-    },
-    {
-      "title": "hgh",
-      "value": 0.12,
-      "type": "income",
-      "id": 13
     },
     {
       "title": "fg",
@@ -29,6 +17,12 @@
       "value": 33,
       "type": "outcome",
       "id": 15
+    },
+    {
+      "title": "fgfg",
+      "value": 0.12,
+      "type": "income",
+      "id": 16
     }
   ]
 }
