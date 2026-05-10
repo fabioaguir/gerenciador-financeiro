@@ -1,12 +1,14 @@
-import { Component, signal, inject, OnInit } from '@angular/core';
-import { Balance } from "./components/balance/balance";
-import { TransactionItem } from "./components/transaction-item/transaction-item";
-import { Transaction } from '../../shared/transaction/intafaces/transaction';
-import { NoTransaction } from "./components/no-transaction/no-transaction";
-import { HttpClient } from '@angular/common/http';
-import { TransactionService } from '../../shared/transaction/service/transaction-service';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatAnchor, MatButtonModule } from "@angular/material/button";
 import { Router, RouterLink } from '@angular/router';
+import { ConfirmationDialogService } from '../../shared/dialog-confirmation/service/confirmation-dialog.service';
+import { FeedBackService } from '../../shared/service/feedback/feedback.service';
+import { Transaction } from '../../shared/transaction/intafaces/transaction';
+import { TransactionService } from '../../shared/transaction/service/transaction-service';
+import { Balance } from "./components/balance/balance";
+import { NoTransaction } from "./components/no-transaction/no-transaction";
+import { TransactionItem } from "./components/transaction-item/transaction-item";
+
 
 @Component({
   selector: 'app-home',
@@ -15,12 +17,14 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './home.scss',
 })
 export class Home implements OnInit {
-  
+
   private transactionService = inject(TransactionService)
-    private router = inject(Router)
-  
+  private router = inject(Router)
+  private feedbackService = inject(FeedBackService)
+  dialog = inject(ConfirmationDialogService);
+
   transactions = signal<Transaction[]>([])
-  
+
   ngOnInit(): void {
     this.getTransactions()
   }
@@ -29,9 +33,30 @@ export class Home implements OnInit {
     this.router.navigate(['edit', transaction.id])
   }
 
+  remove(transaction: Transaction) {
+
+    this.dialog.open({
+      title: 'Deletar transação',
+      message: 'Você realmente deseja deletar esta transação?',
+    }).subscribe({
+      next: (result) => {
+        if (result) {
+          this.transactionService.remove(transaction.id.toString())
+            .subscribe({
+              next: () => {
+                this.transactions.update(transactions => transactions.filter(t => t.id !== transaction.id))
+                this.feedbackService.success('Transação removida com sucesso!')
+              }
+            })
+        };
+      }
+    })
+  }
+
   private getTransactions() {
     this.transactionService.getAll()
       .subscribe({
         next: (transactions) => this.transactions.set(transactions)
-      })}
+      })
+  }
 }

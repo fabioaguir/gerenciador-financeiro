@@ -25,4 +25,7 @@ export class TransactionService {
         return this.httpClient.put<Transaction>(`http://localhost:3000/transactions/${id}`, transaction)
     }
 
+    remove(id: string) {
+        return this.httpClient.delete(`http://localhost:3000/transactions/${id}`)
+    }
 }

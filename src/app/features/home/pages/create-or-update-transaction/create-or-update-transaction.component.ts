@@ -28,7 +28,6 @@ import { tap } from 'rxjs';
     MatButtonModule,
     MatButtonToggleModule,
     NgxMaskDirective,
-    JsonPipe
   ],
   templateUrl: './create-or-update-transaction.component.html',
   styleUrl: './create-or-update-transaction.component.scss',
@@ -36,7 +35,7 @@ import { tap } from 'rxjs';
 export class CreateOrUpdateTransactionComponent {
   private transactionService = inject(TransactionService)
   private router = inject(Router)
-  private feedbackService = inject(FeedBackService);
+  private feedbackService = inject(FeedBackService)
 
   transaction = input<Transaction>();
 
