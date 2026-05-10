@@ -1,52 +1,10 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "value": 100,
-      "type": "income",
-      "title": "Salário"
-    },
-    {
-      "id": 2,
-      "value": 50,
-      "type": "outcome",
-      "title": "Aluguel"
-    },
-    {
-      "id": 3,
-      "value": 50,
-      "type": "income",
-      "title": "Freelance"
-    },
-    {
-      "id": 4,
-      "value": 100,
-      "type": "outcome",
-      "title": "Compras"
-    },
-    {
-      "title": "fa",
-      "value": 1222,
-      "type": "outcome",
-      "id": 5
-    },
-    {
-      "title": "ff",
-      "value": 121,
-      "type": "outcome",
-      "id": 6
-    },
-    {
       "title": "fff",
       "value": 0.22,
       "type": "outcome",
       "id": 7
-    },
-    {
-      "title": "gg",
-      "value": 0.22,
-      "type": "income",
-      "id": 8
     },
     {
       "title": "fg",
@@ -83,6 +41,12 @@
       "value": 0.33,
       "type": "income",
       "id": 14
+    },
+    {
+      "title": "gfg",
+      "value": 33,
+      "type": "outcome",
+      "id": 15
     }
   ]
 }
