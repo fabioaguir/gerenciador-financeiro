@@ -8,6 +8,8 @@ import { UserCredentials } from '../../interface/user-credentials';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthTokenStorageService } from '../../service/auth-token-storage.service';
+import { LoggedInUserStoreService } from '../../stores/logged-in-user-store.service';
+import { switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,7 @@ export class LoginComponent {
   loginService = inject(AuthService);
   router = inject(Router);
   authTokenStorage = inject(AuthTokenStorageService);
+  loggedInUserStore = inject(LoggedInUserStoreService);
 
   form = new FormGroup({
     user: new FormControl('', [Validators.required]),
@@ -34,9 +37,12 @@ export class LoginComponent {
 
     const userDetails = this.form.value as UserCredentials;
 
-    this.loginService.login(userDetails).subscribe({
-      next: (token) => {
-        this.authTokenStorage.setToken(token.token);
+    this.loginService.login(userDetails).pipe(
+      tap((token) => this.authTokenStorage.setToken(token.token)),
+      switchMap((token) => this.loginService.getCurrentUser(token.token)),
+      tap((user) => this.loggedInUserStore.setUser(user))
+    ).subscribe({
+      next: (user) => {
         this.router.navigate(['/']);
       },
       error: (response: HttpErrorResponse) => {
