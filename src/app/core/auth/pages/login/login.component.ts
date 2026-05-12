@@ -5,6 +5,8 @@ import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../service/auth.service';
 import { UserCredentials } from '../../interface/user-credentials';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +17,7 @@ import { UserCredentials } from '../../interface/user-credentials';
 export class LoginComponent {
 
   loginService = inject(AuthService);
+  router = inject(Router);
 
   form = new FormGroup({
     user: new FormControl('', [Validators.required]),
@@ -32,9 +35,12 @@ export class LoginComponent {
     this.loginService.login(userDetails).subscribe({
       next: (token) => {
         console.log(token);
+        this.router.navigate(['/']);
       },
-      error: (error) => {
-        console.error(error);
+      error: (response: HttpErrorResponse) => {
+        if (response.status === 401) {
+          this.form.setErrors({ invalidCredentials: true });
+        }
       }
     });
   }
