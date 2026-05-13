@@ -21,5 +21,8 @@ export class AuthTokenStorageService {
     this.injectedLocalStorage.removeItem(this.TOKEN_KEY);
   }
 
+  hasToken(): boolean {
+    return !!this.getToken();
+  }
 
 }
