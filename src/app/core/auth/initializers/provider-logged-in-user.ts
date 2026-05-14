@@ -1,7 +1,7 @@
 import { inject, provideAppInitializer } from "@angular/core";
+import { of } from "rxjs";
+import { LoginFacadeService } from "../facades/login-facade.service";
 import { AuthTokenStorageService } from "../service/auth-token-storage.service";
-import { tap, switchMap, of } from "rxjs";
-import { AuthService } from "../service/auth.service";
 import { LoggedInUserStoreService } from "../stores/logged-in-user-store.service";
 
 export function provideLoggedInUser() {
@@ -14,14 +14,9 @@ export function provideLoggedInUser() {
         }
 
         const authTokenStorageService = inject(AuthTokenStorageService);
-        const loginService = inject(AuthService);
-
+        const loginFacadeService = inject(LoginFacadeService);
         const token = authTokenStorageService.getToken() as string;
 
-        return loginService.refreshToken(token).pipe(
-            tap((token) => authTokenStorageService.setToken(token.token)),
-            switchMap((token) => loginService.getCurrentUser(token.token)),
-            tap((user) => loggedInUserStore.setUser(user))
-        );
+        return loginFacadeService.refreshToken(token);
     });
 }
