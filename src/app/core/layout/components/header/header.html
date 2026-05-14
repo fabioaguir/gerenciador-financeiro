@@ -1,5 +1,10 @@
 <header>
-    <mat-toolbar>
-        <span>Custom Toolbar</span>
+    <mat-toolbar class="toolbar">
+        <div class="toolbar-content">
+            <span>Gerenciador Financeiro</span>
+            @if (true) {
+            <button matButton="filled" class="toolbar-logout">Sair</button>
+            }
+        </div>
     </mat-toolbar>
 </header>
