@@ -6,8 +6,6 @@ import { UserCredentials } from '../interface/user-credentials';
 import { User } from '../interface/user';
 
 
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -25,6 +23,10 @@ export class AuthService {
         statusText: 'Unauthorized',
       }
     ));
+  }
+
+  logout() {
+    return of({});
   }
 
   refreshToken(token: string) {

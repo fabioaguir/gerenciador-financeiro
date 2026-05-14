@@ -16,8 +16,7 @@ export class LoggedInUserStoreService {
     this.state.set(user);
   }
 
-  logout() {
+  clearUser() {
     this.state.set(null);
   }
-
 }
