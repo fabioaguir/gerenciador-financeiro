@@ -18,7 +18,6 @@ export class CustomColorDirective {
       if (this.color()) {
 
         this.render2.addClass(this.elementRef.nativeElement, `button-${this.color()}`);
-        console.log(this.color());
       }
     });
   }

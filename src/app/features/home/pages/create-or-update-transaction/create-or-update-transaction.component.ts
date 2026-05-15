@@ -18,6 +18,7 @@ import { TransactionType } from '@shared/transaction/enuns/transaction-type';
 import { Transaction } from '@shared/transaction/intafaces/transaction';
 import { TransactionService } from '@shared/transaction/service/transaction-service';
 import { tap } from 'rxjs';
+import { FullWidthDirective } from '@shared/material/form-field/directive/full-width.directive';
 
 @Component({
   selector: 'app-create-transaction',
@@ -28,6 +29,7 @@ import { tap } from 'rxjs';
     MatButtonModule,
     MatButtonToggleModule,
     NgxMaskDirective,
+    FullWidthDirective
   ],
   templateUrl: './create-or-update-transaction.component.html',
   styleUrl: './create-or-update-transaction.component.scss',
