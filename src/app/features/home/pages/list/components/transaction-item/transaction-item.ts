@@ -3,11 +3,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { TransactionValue } from "./components/transaction-value/transaction-value";
 import { Transaction } from '../../../../../../shared/transaction/intafaces/transaction';
+import { CustomColorDirective } from '@shared/material/buttons/directive/custom-color.directive';
 
 
 @Component({
   selector: 'app-transaction-item',
-  imports: [MatCardModule, MatButtonModule, TransactionValue],
+  imports: [MatCardModule, MatButtonModule, TransactionValue, CustomColorDirective],
   templateUrl: './transaction-item.html',
   styleUrl: './transaction-item.scss',
 })
