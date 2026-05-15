@@ -20,6 +20,7 @@ import { TransactionService } from '@shared/transaction/service/transaction-serv
 import { tap } from 'rxjs';
 import { FullWidthDirective } from '@shared/material/form-field/directive/full-width.directive';
 import { MarginBottomDirective } from '@shared/material/form-field/directive/margin-bottom.directive';
+import { CustomFormFieldDirective } from '@shared/material/form-field/directive/custom-form-field.directive';
 
 @Component({
   selector: 'app-create-transaction',
@@ -30,8 +31,7 @@ import { MarginBottomDirective } from '@shared/material/form-field/directive/mar
     MatButtonModule,
     MatButtonToggleModule,
     NgxMaskDirective,
-    FullWidthDirective,
-    MarginBottomDirective
+    CustomFormFieldDirective
   ],
   templateUrl: './create-or-update-transaction.component.html',
   styleUrl: './create-or-update-transaction.component.scss',
