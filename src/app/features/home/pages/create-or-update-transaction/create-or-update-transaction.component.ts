@@ -19,6 +19,7 @@ import { Transaction } from '@shared/transaction/intafaces/transaction';
 import { TransactionService } from '@shared/transaction/service/transaction-service';
 import { tap } from 'rxjs';
 import { FullWidthDirective } from '@shared/material/form-field/directive/full-width.directive';
+import { MarginBottomDirective } from '@shared/material/form-field/directive/margin-bottom.directive';
 
 @Component({
   selector: 'app-create-transaction',
@@ -29,7 +30,8 @@ import { FullWidthDirective } from '@shared/material/form-field/directive/full-w
     MatButtonModule,
     MatButtonToggleModule,
     NgxMaskDirective,
-    FullWidthDirective
+    FullWidthDirective,
+    MarginBottomDirective
   ],
   templateUrl: './create-or-update-transaction.component.html',
   styleUrl: './create-or-update-transaction.component.scss',

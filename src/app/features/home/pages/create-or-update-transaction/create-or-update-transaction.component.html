@@ -11,7 +11,7 @@
     </div>
 
 
-    <mat-form-field class="m-24" aooFullWidth>
+    <mat-form-field appFullWidth="true" appMarginBottom>
         <mat-label>Título</mat-label>
         <input matInput placeholder="Título da transação" formControlName="title" required>
         @if (form().controls.title.hasError('required')) {
@@ -19,7 +19,7 @@
         }
     </mat-form-field>
 
-    <mat-form-field class="m-24" aooFullWidth>
+    <mat-form-field appFullWidth="true" appMarginBottom>
         <mat-label>Valor</mat-label>
         <input matInput placeholder="Valor da transação" formControlName="value" mask="separator.2">
         <span matTextPrefix>R$ &nbsp;</span>

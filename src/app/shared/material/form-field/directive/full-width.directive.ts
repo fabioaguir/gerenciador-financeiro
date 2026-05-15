@@ -2,14 +2,14 @@ import { Directive, effect, inject, input, ElementRef, Renderer2, booleanAttribu
 
 
 @Directive({
-  selector: '[aooFullWidth]'
+  selector: '[appFullWidth]'
 })
 export class FullWidthDirective {
 
   elementRef = inject(ElementRef);
   render2 = inject(Renderer2);
 
-  appFullWidth = input(true, { transform: booleanAttribute, alias: 'aooFullWidth' });
+  appFullWidth = input(true, { transform: booleanAttribute, alias: 'appFullWidth' });
 
   constructor() {
     effect(() => {
