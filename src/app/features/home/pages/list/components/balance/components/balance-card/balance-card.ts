@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
@@ -10,7 +11,7 @@ enum ValueCssClass {
 
 @Component({
   selector: 'app-balance-card',
-  imports: [MatCardModule],
+  imports: [MatCardModule, CurrencyPipe],
   templateUrl: './balance-card.html',
   styleUrl: './balance-card.scss',
 })
@@ -25,14 +26,14 @@ export class BalanceCard {
         return ValueCssClass.income;
       case 'outcome':
         return ValueCssClass.outcome;
-        case 'balance':
-          if (this.value() > 0) {
-            return ValueCssClass.income;
-          } else if (this.value() < 0) {
-            return ValueCssClass.outcome;
-          } else {
-            return 'zero' as ValueCssClass; // Assuming you have a CSS class for zero balance
-          }
+      case 'balance':
+        if (this.value() > 0) {
+          return ValueCssClass.income;
+        } else if (this.value() < 0) {
+          return ValueCssClass.outcome;
+        } else {
+          return 'zero' as ValueCssClass; // Assuming you have a CSS class for zero balance
+        }
     }
   })
 }
