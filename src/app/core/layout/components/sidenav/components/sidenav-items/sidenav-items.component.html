@@ -1,7 +1,7 @@
 <mat-nav-list>
     @for (link of links(); track link) {
     <a mat-list-item [routerLink]="link.url" routerLinkActive="mat-list-item-active"
-        [routerLinkActiveOptions]="{ exact: true }">
+        [routerLinkActiveOptions]="{ exact: true }" (click)="closeSidenav()">
         {{
         link.label }}</a>
     }

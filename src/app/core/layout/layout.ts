@@ -1,13 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { Header } from './components/header/header';
-import { RouterModule, RouterOutlet } from "@angular/router";
+import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { SidenavItems } from './components/sidenav-items/sidenav-items';
+import { RouterOutlet } from "@angular/router";
+import { Header } from './components/header/header';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [Header, RouterOutlet, MatSidenavModule, SidenavItems],
+  imports: [Header, RouterOutlet, MatSidenavModule, SidenavComponent],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })

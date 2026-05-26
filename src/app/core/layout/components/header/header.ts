@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { MatButton } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ToggleSidevavMenuComponent } from './components/toggle-sidevav-menu/toggle-sidevav-menu.component';
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbarModule, MatButton],
+  imports: [MatToolbarModule, ToggleSidevavMenuComponent],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
-
-
 
 }
