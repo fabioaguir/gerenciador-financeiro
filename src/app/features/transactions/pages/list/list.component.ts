@@ -1,20 +1,29 @@
-import { Component, inject, input, linkedSignal, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, computed, inject, input, linkedSignal, Signal, signal } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatAnchor, MatButtonModule } from '@angular/material/button';
 import { NoTransaction } from './components/no-transaction/no-transaction';
-import { Balance } from './components/balance/balance';
 import { TransactionContainerComponent } from './components/transaction-container/transaction-container.component';
 import { TransactionItem } from './components/transaction-item/transaction-item';
 import { ConfirmationDialogService } from '@shared/dialog-confirmation/service/confirmation-dialog.service';
 import { FeedBackService } from '@shared/service/feedback/feedback.service';
 import { Transaction } from '@shared/transaction/intafaces/transaction';
 import { TransactionService } from '@shared/transaction/service/transaction-service';
+import { SearchComponent } from './components/search/search.component';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { debounceTime } from 'rxjs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+
+function typeDelay(searchTerm: Signal<string>) {
+  const observable = toObservable(searchTerm).pipe(debounceTime(500))
+  return toSignal(observable, { initialValue: '' })
+}
 
 @Component({
   selector: 'app-list',
-  imports: [Balance, TransactionItem,
+  imports: [TransactionItem,
     NoTransaction, MatAnchor, MatButtonModule,
-    RouterLink, TransactionContainerComponent],
+    RouterLink, TransactionContainerComponent, SearchComponent, MatProgressBarModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -23,12 +32,17 @@ export class ListComponent {
   private router = inject(Router)
   private feedbackService = inject(FeedBackService)
   dialog = inject(ConfirmationDialogService);
+  private activatedRoute = inject(ActivatedRoute)
 
-  transactions = input.required<Transaction[]>()
-  items = linkedSignal<Transaction[]>(() => this.transactions())
+  searchTerm = signal<string>('')
+
+  resourceRef = this.transactionService.getAllWithHttpResource(typeDelay(this.searchTerm))
+
+  isLoading = computed(() => this.resourceRef.isLoading())
+  transactions = computed(() => this.resourceRef.value())
 
   edit(transaction: Transaction) {
-    this.router.navigate(['edit', transaction.id])
+    this.router.navigate(['edit', transaction.id], { relativeTo: this.activatedRoute })
   }
 
   remove(transaction: Transaction) {
@@ -42,7 +56,7 @@ export class ListComponent {
           this.transactionService.remove(transaction.id.toString())
             .subscribe({
               next: () => {
-                this.items.update(transactions => transactions.filter(t => t.id !== transaction.id))
+                this.resourceRef.update(transactions => transactions.filter(t => t.id !== transaction.id))
                 this.feedbackService.success('Transação removida com sucesso!')
               }
             })

@@ -18,6 +18,7 @@ export class SidenavItemsComponent {
 
   links = signal([
     { label: 'home', url: '/' },
+    { label: 'transações', url: '/transactions' },
   ]);
 
   loggedInUser = computed(() => this.loggedInUserStore.isLoggedIn());

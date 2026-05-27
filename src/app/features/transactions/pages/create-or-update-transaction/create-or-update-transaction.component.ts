@@ -67,7 +67,7 @@ export class CreateOrUpdateTransactionComponent {
 
     this.createOrUpdate(formValue)?.subscribe({
       next: (response) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/transactions']);
       }
     })
   }

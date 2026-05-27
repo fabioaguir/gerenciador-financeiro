@@ -1,10 +1,14 @@
-<app-balance [transactions]="items()"></app-balance>
 <div class="actions">
-    <a matButton="filled" routerLink="create">
+    <app-search [(searchTerm)]="searchTerm" class="search" />
+    <a matButton="filled" routerLink="create" class="add-transaction">
         Adicionar transação
     </a>
 </div>
-<app-transaction-container [transactions]="items()">
+
+@if(isLoading()) {
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+} @else {
+<app-transaction-container [transactions]="transactions()">
     <ng-template #item let-item="item">
         <app-transaction-item class="transaction" [transaction]="item" (edit)="edit($event)"
             (remove)="remove($event)" />
@@ -14,3 +18,4 @@
         <app-no-transaction />
     </ng-template>
 </app-transaction-container>
+}

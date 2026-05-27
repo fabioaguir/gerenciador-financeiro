@@ -23,6 +23,12 @@
       "value": 0.12,
       "type": "income",
       "id": 16
+    },
+    {
+      "title": "hhh",
+      "value": 0.11,
+      "type": "outcome",
+      "id": 17
     }
   ]
 }
