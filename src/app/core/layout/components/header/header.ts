@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToggleSidevavMenuComponent } from './components/toggle-sidevav-menu/toggle-sidevav-menu.component';
 
@@ -7,6 +7,7 @@ import { ToggleSidevavMenuComponent } from './components/toggle-sidevav-menu/tog
   imports: [MatToolbarModule, ToggleSidevavMenuComponent],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {
 

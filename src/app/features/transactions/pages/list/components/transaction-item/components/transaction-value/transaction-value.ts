@@ -1,6 +1,6 @@
-import { Component, computed, input } from '@angular/core';
-import { TransactionType } from '../../../../../../../../shared/transaction/enuns/transaction-type';
-import { Transaction } from '../../../../../../../../shared/transaction/intafaces/transaction';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { TransactionType } from '@shared/transaction/enuns/transaction-type';
+import { Transaction } from '@shared/transaction/intafaces/transaction';
 import { CurrencyPipe } from '@angular/common';
 
 
@@ -16,7 +16,8 @@ const CssClass = {
   host: {
     '[class]': 'cssClass()'
   },
-  template: `{{ transaction().value | currency}}`
+  template: `{{ transaction().value | currency}}`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionValue {
 

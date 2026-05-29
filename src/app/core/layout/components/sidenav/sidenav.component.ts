@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
@@ -11,6 +11,7 @@ import { SidenavVisibilityStore } from '@core/layout/stores/sidenav-visibility.s
   imports: [MatListModule, RouterModule, MatSidenavModule, SidenavItemsComponent],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidenavComponent {
 

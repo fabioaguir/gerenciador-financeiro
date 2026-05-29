@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, linkedSignal, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, Signal, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatAnchor, MatButtonModule } from '@angular/material/button';
 import { NoTransaction } from './components/no-transaction/no-transaction';
@@ -26,6 +26,7 @@ function typeDelay(searchTerm: Signal<string>) {
     RouterLink, TransactionContainerComponent, SearchComponent, MatProgressBarModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
   private transactionService = inject(TransactionService)

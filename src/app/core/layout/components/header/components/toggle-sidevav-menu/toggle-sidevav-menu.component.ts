@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,6 +10,7 @@ import { SidenavVisibilityStore } from '@core/layout/stores/sidenav-visibility.s
   imports: [MatToolbarModule, MatIconModule, MatButtonModule],
   templateUrl: './toggle-sidevav-menu.component.html',
   styleUrl: './toggle-sidevav-menu.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleSidevavMenuComponent {
 

@@ -1,4 +1,4 @@
-import { Component, computed, input, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, linkedSignal } from '@angular/core';
 import { MatAnchor, MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { Transaction } from '@shared/transaction/intafaces/transaction';
@@ -12,6 +12,7 @@ import { TransactionType } from '@shared/transaction/enuns/transaction-type';
   imports: [Balance, PieChartComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
   transactions = input.required<Transaction[]>()
